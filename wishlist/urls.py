@@ -11,6 +11,7 @@ app_name = 'wishlist'
 urlpatterns = [
     path('', show_wishlist, name='show_wishlist'),
     path('xml/', show_xml, name='show_xml'),
+    path('json/', show_xml, name='show_json'),
     path('json/<int:id>', show_json_by_id, name='show_json_by_id'),
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
