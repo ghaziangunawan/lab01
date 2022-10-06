@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
@@ -96,4 +95,23 @@ h1,h2,th,td{
 </body>
 
 
+
+
+
 {% endblock content %}
+
+<script>
+    $(document).ready(() => {
+        const url = "{% url 'wishlist:show_wishlistajax' %}";
+        $.get(url, (data) => {
+            data.forEach((item) => {
+                var item_name = item.fields.item_name;
+                var item_price = item.fields.item_name;
+                var item_description = item.fields.descriptions;
+                var html = "<tr><td>" + item_name +
+                            "<tr><td>" + item_price + 
+                            "<tr><td>" + item_description + "</td>";
+        $("tbody").append(html);
+            })
+        })
+    })
